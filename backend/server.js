@@ -1,10 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+  app.use(cors({
+  origin: 'http://localhost:5173', // your frontend URL
+  credentials: true
+}));
+
 
 // ✅ Connect MongoDB
 mongoose.connect(process.env.MONGO_URI)
